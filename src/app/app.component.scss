@@ -5,6 +5,17 @@
 .small-device{
   display: none;
 }
+.main-content{
+  direction: rtl;
+  text-align: right;
+  height: 100%;
+}
+.sidebar{
+  -webkit-box-shadow: -9px 1px 5px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: -9px 1px 5px -8px rgba(0,0,0,0.75);
+  box-shadow: -9px 1px 5px -8px rgba(0,0,0,0.75);
+  height: 100%;
+}
 
 @media only screen and (max-width: 768px){
   .normal-device{

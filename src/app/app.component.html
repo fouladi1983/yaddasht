@@ -16,6 +16,7 @@
           <a href="#" class="nav-link small-device">درباره ما</a>
       </li>
       <!---->
+
       <!-- normal devices navbar -->
       <li class="navbar-item">
           <a href="#" class="nav-link normal-device">درباره ما</a>
@@ -30,4 +31,19 @@
     </ul>
   </div>
 </nav>
-<router-outlet></router-outlet>
+<div class="container-fluid main-content">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="sidebar">
+        <h4>sidebar</h4>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div>
+        main container
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
