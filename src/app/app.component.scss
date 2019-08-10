@@ -9,12 +9,21 @@
   direction: rtl;
   text-align: right;
   height: 100%;
+  margin-top:2%;
 }
 .sidebar{
   -webkit-box-shadow: -9px 1px 5px -8px rgba(0,0,0,0.75);
   -moz-box-shadow: -9px 1px 5px -8px rgba(0,0,0,0.75);
   box-shadow: -9px 1px 5px -8px rgba(0,0,0,0.75);
   height: 100%;
+}
+.profile-info{
+  text-align: center;
+}
+#avatar{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
 
 @media only screen and (max-width: 768px){
@@ -23,5 +32,8 @@
   }
   .small-device{
     display: block;
+  }
+  .sidebar{
+    display: none
   }
 }
