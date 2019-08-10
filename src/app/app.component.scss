@@ -17,6 +17,9 @@
   box-shadow: -9px 1px 5px -8px rgba(0,0,0,0.75);
   height: 100%;
 }
+.sidebar-link{
+  margin-top: 20%;
+}
 .profile-info{
   text-align: center;
 }
@@ -24,6 +27,9 @@
   border-radius: 50%;
   width: 100px;
   height: 100px;
+}
+.active{
+  color:#fff;
 }
 
 @media only screen and (max-width: 768px){

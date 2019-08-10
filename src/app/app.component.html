@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a href="#" class="navbar-brand">YADDASHT</a>
+  <span style="color: aliceblue; cursor:pointer;">ورود</span>
   <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,7 +8,7 @@
     <ul class="navbar-nav ml-auto">
       <!-- small devices navbar-->
       <li class="nav-item smallDevice">
-        <a href="#" class="nav-link small-device">خانه</a>
+        <a href="#" router-link="home" class="nav-link small-device">خانه</a>
       </li>
       <li class="navbar-item">
         <a href="#" class="nav-link small-device">تماس با ما</a>
@@ -25,7 +26,7 @@
           <a href="#" class="nav-link normal-device">تماس با ما</a>
       </li>
       <li class="nav-item smallDevice">
-          <a href="#" class="nav-link normal-device">خانه</a>
+          <a routerLink="/home" routerLinkActive="active" class="nav-link normal-device">خانه</a>
       </li>
       <!---->
     </ul>
@@ -40,11 +41,14 @@
           <div><b>محمدرضا فولادی</b></div>
           <div>سمت: کارشناس ارشد تولید</div>
         </div>
+        <div class="list-group sidebar-link">
+          <a routerLink="/profile" routerLinkActive="active"  class="list-group-item list-group-item-action list-group-item-info">کارتابل</a>
+          <a routerLink="/report" routerLinkActive="active" class="list-group-item list-group-item-action list-group-item-secondary">گزارشات</a>
+        </div>
       </div>
     </div>
     <div class="col-md-10">
       <div>
-        main container
         <router-outlet></router-outlet>
       </div>
     </div>
