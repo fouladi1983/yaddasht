@@ -1,0 +1,16 @@
+.navbar-nav{
+  float:right;
+  text-align: right;
+}
+.small-device{
+  display: none;
+}
+
+@media only screen and (max-width: 768px){
+  .normal-device{
+    display: none;
+  }
+  .small-device{
+    display: block;
+  }
+}
