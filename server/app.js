@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-const helloworldRoutes = require('./api/routes/helloworld');
+const registerRoutes = require('./api/routes/register');
 
-app.use('/helloworld', helloworldRoutes);
+app.use('/register', registerRoutes);
 
 module.exports = app;
