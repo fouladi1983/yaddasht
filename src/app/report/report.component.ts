@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InteractionService } from '../interaction.service';
 
 @Component({
   selector: 'app-report',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportComponent implements OnInit {
 
-  constructor() { }
+  constructor(private interactionService: InteractionService) { }
 
   ngOnInit() {
+    this.interactionService.sendHomeMessage('reportComponent');
   }
 
 }

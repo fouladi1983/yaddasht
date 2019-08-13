@@ -2,10 +2,10 @@
   <a href="#" class="navbar-brand">YADDASHT</a>
   <ul class="navbar-nav mr-auto normal-device">
     <li class="nav-item">
-      <a href="" class="nav-link">ورود</a>
+      <a routerLink="/login" class="nav-link">ورود</a>
     </li>
     <li class="nav-item">
-      <a href="" class="nav-link">ثبت نام</a>
+      <a routerLink="/registeration" class="nav-link">ثبت نام</a>
     </li>
   </ul>
   <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -24,10 +24,10 @@
           <a href="#" class="nav-link">درباره ما</a>
       </li>
       <li class="navbar-item small-device">
-        <a href="#" class="nav-link">ورود</a>
+        <a routerLink="/login" class="nav-link">ورود</a>
       </li>
       <li class="navbar-item small-device">
-        <a href="#" class="nav-link">ثبت نام</a>
+        <a routerLink="/registeration" class="nav-link">ثبت نام</a>
       </li>
       <!---->
 
@@ -36,10 +36,10 @@
           <a href="#" class="nav-link">درباره ما</a>
       </li>
       <li class="navbar-item normal-device">
-          <a href="#" class="nav-link">تماس با ما</a>
+          <a class="nav-link">تماس با ما</a>
       </li>
       <li class="nav-item normal-device">
-          <a routerLink="/home" routerLinkActive="active" class="nav-link normal-device">خانه</a>
+          <a routerLink="/home" class="nav-link normal-device">خانه</a>
       </li>
       <!---->
     </ul>
@@ -47,7 +47,8 @@
 </nav>
 <div class="container-fluid main-content">
   <div class="row">
-    <div class="col-md-2">
+    <!-- SIDE BAR-->
+    <div [class.d-none]="!displaySidebar" class="col-md-2">
       <div class="sidebar">
         <div class="profile-info">
           <img id="avatar" src="../assets/img/avatar.png" alt="avatar">
@@ -60,11 +61,14 @@
         </div>
       </div>
     </div>
+    <!--  -->
+    <!-- MAIN CONTENT-->
     <div class="col-md-10">
       <div>
         <router-outlet></router-outlet>
       </div>
     </div>
+    <!--  -->
   </div>
 </div>
 

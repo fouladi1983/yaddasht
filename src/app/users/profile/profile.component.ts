@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InteractionService } from 'src/app/interaction.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private interactionService: InteractionService) { }
 
   ngOnInit() {
+    this.interactionService.sendHomeMessage('profileComponent');
   }
 
 }
