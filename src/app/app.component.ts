@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.interactionService.homeMessage$.subscribe(message => {
-      if (message === 'homeComponent') {
+      if (message === 'homeComponent' || message === 'loginComponent' || message === 'registrationComponent') {
         this.message = message;
         this.displaySidebar = false;
       } else {

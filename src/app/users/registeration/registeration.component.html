@@ -7,24 +7,33 @@
         </h3>
       </div>
       <div class="card-body">
-        <form class="form">
+        <form [formGroup]="registerationForm" class="form" (ngSubmit)="onSubmit()" novalidate>
           <div class="form-group">
             <label for="">ایمیل</label>
-            <input #emailRef type="text" class="form-control rounded-0">
+            <input [class.is-invalid]="email.invalid && email.touched" formControlName="email" #emailRef type="email" class="form-control" placeholder="email">
+            <div *ngIf="email.invalid && email.touched">
+              <small *ngIf="email.errors?.required" class="text-danger">ایمیل باید وارد شود</small>
+              <small *ngIf="email.errors?.email" class="text-danger">دقت نمایید فرمت ایمیل صحیح وارد شود</small>
+            </div>
           </div>
           <div class="form-group">
             <label for="">رمز  عبور</label>
-            <input type="text" class="form-control rounded-0">
+            <input [class.is-invalid]="password.invalid && password.touched" formControlName="password" type="password" class="form-control" placeholder="password">
+            <div *ngIf="password.invalid && password.touched">
+              <small *ngIf="password.errors?.required" class="text-danger">رمز عبور باید وارد شود</small>
+              <small *ngIf="password.errors?.minlength" class="text-danger">رمز عبور حداقل باید شامل 5 کاراکتر باشد</small>
+            </div>
           </div>
           <div class="form-group">
             <label for="">تکرار رمز عبور</label>
-            <input type="text" class="form-control rounded-0">
+            <input [class.is-invalid]="registerationForm.errors?.misMatch" formControlName="confirmPassword" type="password" class="form-control" placeholder="confirm password">
+            <small class="text-danger" *ngIf="registerationForm.errors?.misMatch">رمز عبور با تکرار آن یکسان نیست</small>
           </div>
           <div class="form-group">
             <label for="">سمت</label>
-            <input type="text" class="form-control rounded-0">
+            <input formControlName="position" type="text" class="form-control" placeholder="project team position">
           </div>
-          <button type="submit" class="btn btn-primary float-left">ثبت نام</button>
+          <button [disabled]="!registerationForm.valid" type="submit" class="btn btn-primary float-left rounded-0">ثبت نام</button>
         </form>
       </div>
     </div>

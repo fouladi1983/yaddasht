@@ -3,8 +3,10 @@ const router = express.Router();
 const sql = require('mssql');
 const bcrypt = require('bcrypt');
 const config = require('./db/config');
-const uuid = require('uuid/v1');
+const uuidv1 = require('uuid/v1');
 const functions = require('./functions');
+
+uuid = uuidv1();
 
 router.get('/', (req,res)=>{
   res.status(200).json({
@@ -12,13 +14,14 @@ router.get('/', (req,res)=>{
   })
 })
 
-router.post('/register', (req,res,next)=>{
+router.post('/', (req,res,next)=>{
   let userInfo = {
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    position: req.body.position
   }
 
-  let saltRound = 10;
+  const saltRound = 10;
 
   sql.close();
   sql.connect(config, (err)=>{
@@ -26,13 +29,15 @@ router.post('/register', (req,res,next)=>{
 
     let request = new sql.Request();
     bcrypt.hash(userInfo.password, saltRound, (err,hash)=>{
-      if(err) res.status(503).json({message: 'خطایی در کد کردن رمز عبور پیش آمده لطفا دوباره تلاش نمایید'});
-
-      request.query('insert into users(email,password)\
-                      values(N'+userInfo.email+', N'+hash+')', (err)=>{
+      if(err){
+        console.log(err)
+        res.status(503).json({message: 'خطایی در کد کردن رمز عبور پیش آمده لطفا دوباره تلاش نمایید'});
+      }
+      request.query("insert into users(email,password,position)\
+                      values(N'"+userInfo.email+"', N'"+hash+"', N'"+position+"')", (err)=>{
                         if(err) res.status(503).json({message: 'خطایی در ثبت اطلاعات کاربر رخ داده است لطفا دوباره تلاش نمایید'});
 
-                        request.query('select Id from users where email = '+userInfo.email+'',(err,result)=>{
+                        request.query("select Id from users where email = '"+userInfo.email+"'",(err,result)=>{
                           let userId = result.recordset[0].Id;
 
                           request.query("insert into uuid(userId, uuId) values(N'"+userId+"', N'"+uuid+"')", (err)=>{
