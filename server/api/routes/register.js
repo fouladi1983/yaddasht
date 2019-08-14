@@ -45,7 +45,7 @@ router.post('/', (req,res,next)=>{
 
                             let to = userInfo.email;
                             let subject = 'فعال سازی';
-                            let html = '<p>برای فعال سازی نام کاربری بر روی لینک زیر کلیک کنید</p><p>http://api.parmok.com/useractivation?uuid='+uuid+'</p>';
+                            let html = '<p>برای فعال سازی نام کاربری بر روی لینک زیر کلیک کنید</p><p>http://localhost:3000/useractivation?uuid='+uuid+'</p>';
 
                             functions.mailer(to,subject,html);
 
