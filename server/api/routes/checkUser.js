@@ -20,7 +20,7 @@ router.get('/', (req,res,next) => {
         res.status(200).json({message: true});
         sql.close();
       }else{
-        res.status(401).json({message: false});
+        res.status(404).json({message: 'این ایمیل در سیستم موجود نمی باشد'});
         sql.close();
       }
     })

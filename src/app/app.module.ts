@@ -6,19 +6,25 @@ import { AppRoutingModule, routingComponenets } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './users/login/login.component';
 import { RegisterationComponent } from './users/registeration/registeration.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserActivationComponent } from './users/user-activation/user-activation.component';
+import { WorkbookComponent } from './workbook/workbook.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponenets,
     LoginComponent,
-    RegisterationComponent
+    RegisterationComponent,
+    UserActivationComponent,
+    WorkbookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

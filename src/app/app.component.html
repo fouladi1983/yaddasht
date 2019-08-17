@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a href="#" class="navbar-brand">YADDASHT</a>
   <ul class="navbar-nav mr-auto normal-device">
-    <li class="nav-item">
+    <li *ngIf="!loggedIn" class="nav-item">
       <a routerLink="/login" class="nav-link">ورود</a>
+    </li>
+    <li *ngIf="loggedIn" class="nav-item">
+      <a routerLink="/profile" class="nav-link">{{userEmail}}</a>
     </li>
     <li class="nav-item">
       <a routerLink="/registeration" class="nav-link">ثبت نام</a>
@@ -23,7 +26,7 @@
       <li class="navbar-item small-device">
           <a href="#" class="nav-link">درباره ما</a>
       </li>
-      <li class="navbar-item small-device">
+      <li *ngIf="!loggedIn" class="navbar-item small-device">
         <a routerLink="/login" class="nav-link">ورود</a>
       </li>
       <li class="navbar-item small-device">

@@ -5,6 +5,8 @@ import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { RegisterationComponent } from './users/registeration/registeration.component';
 import { LoginComponent } from './users/login/login.component';
+import { UserActivationComponent } from './users/user-activation/user-activation.component';
+import { WorkbookComponent } from './workbook/workbook.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'report', component: ReportComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'registeration', component: RegisterationComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'user-activation', component: UserActivationComponent},
+  { path: 'workbook', component: WorkbookComponent}
 ];
 
 @NgModule({

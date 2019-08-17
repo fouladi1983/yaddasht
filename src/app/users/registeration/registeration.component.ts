@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import { InteractionService } from 'src/app/interaction.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PasswordValidator } from 'src/app/shared/password.validator';
+import { RegistrationService } from 'src/app/registration.service';
 
 @Component({
   selector: 'app-registeration',
@@ -9,6 +10,9 @@ import { PasswordValidator } from 'src/app/shared/password.validator';
   styleUrls: ['./registeration.component.scss']
 })
 export class RegisterationComponent implements OnInit, AfterViewInit {
+
+  successMessage = '';
+  errorMessage = '';
 
   registerationForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -29,7 +33,11 @@ export class RegisterationComponent implements OnInit, AfterViewInit {
 
  @ViewChild('emailRef', {static: false}) emailElementRef: ElementRef;
 
-  constructor(private interactionService: InteractionService, private fb: FormBuilder) { }
+  constructor(
+    private interactionService: InteractionService,
+    private fb: FormBuilder,
+    private registerationService: RegistrationService
+    ) { }
 
   ngOnInit() {
     this.interactionService.sendHomeMessage('registrationComponent');
@@ -39,8 +47,22 @@ export class RegisterationComponent implements OnInit, AfterViewInit {
     this.emailElementRef.nativeElement.focus();
   }
 
-  onSubmit(){
-    console.log(this.registerationForm.get('email').value);
-  }
+  onSubmit() {
+    const userInfo = {
+      email: this.registerationForm.get('email').value,
+      password: this.registerationForm.get('password').value,
+      position: this.registerationForm.get('position').value
+    };
 
+    this.registerationService.register(userInfo)
+    .subscribe(
+      httpResponse => {
+        this.successMessage = httpResponse.message;
+        console.log(httpResponse.message);
+      },
+      httpErrorResponse => {
+        this.errorMessage = httpErrorResponse.error.message;
+      }
+      );
+  }
 }
