@@ -50,24 +50,11 @@ get password(){
 
     this.authService.login(userInfo).subscribe(
       data => {
-      localStorage.setItem('token', data);
-      this.interactionService.sendLoginMessage(userInfo.email);
+      localStorage.setItem('token', data['token']);
+      localStorage.setItem('userId', data['userId']);
       this._router.navigateByUrl('/');
       },
       error => console.log(error));
-  }
-
-  onBlur() {
-    this.authService.checkUser(this.loginForm.get('email').value).subscribe(
-      res => '',
-      error => {
-        if (this.errorMessage === '') {
-          this.errorMessage = error.error.message;
-        } else {
-          this.errorMessage = '';
-        }
-      }
-    );
   }
 
 }

@@ -24,7 +24,8 @@ export class UserActivationComponent implements OnInit {
     const queryParameter = this._route.snapshot.queryParamMap.get('uuid');
     this._http.get('http://192.168.100.197:3000/useractivation?uuid=' + queryParameter).subscribe(
       httpMsg => {
-        this.httpMessage = httpMsg.message;
+        // tslint:disable-next-line: no-string-literal
+        this.httpMessage = httpMsg['message'];
         },
       errMessage => {
         this.errorMessage = errMessage.error.message;

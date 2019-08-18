@@ -45,7 +45,10 @@ router.post('/', (req,res,next) => {
             },JWT_KEY,{
               expiresIn: '8h'
             })
-            res.status(201).json(token);
+            res.status(201).json({
+              token: token,
+              userId: userId
+            });
             sql.close();
           }
         })

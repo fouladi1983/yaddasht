@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a href="#" class="navbar-brand">YADDASHT</a>
   <ul class="navbar-nav mr-auto normal-device">
-    <li *ngIf="!loggedIn" class="nav-item">
+    <li *ngIf="!authService.loggedIn()" class="nav-item">
       <a routerLink="/login" class="nav-link">ورود</a>
     </li>
-    <li *ngIf="loggedIn" class="nav-item">
-      <a routerLink="/profile" class="nav-link">{{userEmail}}</a>
+    <li *ngIf="authService.loggedIn()" class="nav-item" (click)="authService.logoutUser()">
+      <a class="nav-link">خروج</a>
     </li>
-    <li class="nav-item">
+    <li *ngIf="!authService.loggedIn()" class="nav-item">
       <a routerLink="/registeration" class="nav-link">ثبت نام</a>
     </li>
   </ul>
@@ -26,11 +26,14 @@
       <li class="navbar-item small-device">
           <a href="#" class="nav-link">درباره ما</a>
       </li>
-      <li *ngIf="!loggedIn" class="navbar-item small-device">
+      <li *ngIf="!authService.loggedIn()" class="navbar-item small-device">
         <a routerLink="/login" class="nav-link">ورود</a>
       </li>
-      <li class="navbar-item small-device">
+      <li *ngIf="!authService.loggedIn()" class="navbar-item small-device">
         <a routerLink="/registeration" class="nav-link">ثبت نام</a>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="navbar-item small-device" (click)="authService.logoutUser()">
+        <a class="nav-link">خروج</a>
       </li>
       <!---->
 
@@ -40,6 +43,9 @@
       </li>
       <li class="navbar-item normal-device">
           <a class="nav-link">تماس با ما</a>
+      </li>
+      <li class="navbar-item normal-device" (click)="showSidebar()">
+        <a routerLink="/workbook" class="nav-link">کارتابل</a>
       </li>
       <li class="nav-item normal-device">
           <a routerLink="/home" class="nav-link normal-device">خانه</a>
@@ -55,7 +61,7 @@
       <div class="sidebar">
         <div class="profile-info">
           <img id="avatar" src="../assets/img/avatar.png" alt="avatar">
-          <div><b>محمدرضا فولادی</b></div>
+          <div><a routerLink="/profile"><b>محمدرضا فولادی</b></a></div>
           <div>سمت: کارشناس ارشد تولید</div>
         </div>
         <div class="list-group sidebar-link">

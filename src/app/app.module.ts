@@ -6,9 +6,11 @@ import { AppRoutingModule, routingComponenets } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './users/login/login.component';
 import { RegisterationComponent } from './users/registeration/registeration.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserActivationComponent } from './users/user-activation/user-activation.component';
 import { WorkbookComponent } from './workbook/workbook.component';
+import { AuthGuard } from './auth.guard';
+import { TokenIntercepterService } from './token-intercepter.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { WorkbookComponent } from './workbook/workbook.component';
     LoginComponent,
     RegisterationComponent,
     UserActivationComponent,
-    WorkbookComponent
+    WorkbookComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,13 @@ import { WorkbookComponent } from './workbook/workbook.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenIntercepterService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
