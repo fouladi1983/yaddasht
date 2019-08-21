@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   displaySidebar = true;
   userEmail = '';
 
-  constructor(private interactionService: InteractionService, private authService: AuthServiceService) {}
+  constructor(private interactionService: InteractionService, public authService: AuthServiceService) {}
 
   ngOnInit() {
     this.interactionService.homeMessage$.subscribe(message => {

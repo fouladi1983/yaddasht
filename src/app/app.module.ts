@@ -11,6 +11,7 @@ import { UserActivationComponent } from './users/user-activation/user-activation
 import { WorkbookComponent } from './workbook/workbook.component';
 import { AuthGuard } from './auth.guard';
 import { TokenIntercepterService } from './token-intercepter.service';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @NgModule({
   declarations: [
@@ -26,15 +27,15 @@ import { TokenIntercepterService } from './token-intercepter.service';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenIntercepterService,
       multi: true
-    }
-  ],
+    },
+    NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
