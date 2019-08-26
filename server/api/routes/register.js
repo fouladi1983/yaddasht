@@ -33,6 +33,7 @@ router.post('/', (req,res,next)=>{
         console.log(err)
         res.status(503).json({message: 'خطایی در کد کردن رمز عبور پیش آمده لطفا دوباره تلاش نمایید'});
       }
+
       request.query("select Id from users where email = N'"+userInfo.email+"'", (err,result) => {
         if(result.recordset.length > 0){
           res.status(409).json({
@@ -42,7 +43,12 @@ router.post('/', (req,res,next)=>{
         }else{
           request.query("insert into users(email,password,position)\
           values(N'"+userInfo.email+"', N'"+hash+"', N'"+userInfo.position+"')", (err)=>{
-            if(err) res.status(503).json({message: 'خطایی در ثبت اطلاعات کاربر رخ داده است لطفا دوباره تلاش نمایید'});
+            if(err){
+              res.status(503).json(
+                {message: 'خطایی در ثبت اطلاعات کاربر رخ داده است لطفا دوباره تلاش نمایید'}
+                );
+                sql.close();
+            }
 
             request.query("select Id from users where email = '"+userInfo.email+"'",(err,result)=>{
               let userId = result.recordset[0].Id;

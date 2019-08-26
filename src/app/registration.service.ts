@@ -11,7 +11,7 @@ export class RegistrationService {
   // tslint:disable-next-line: variable-name
   constructor(private _http: HttpClient) { }
 
-  regUrl = 'http://192.168.100.197:3000/register';
+  regUrl = 'http://localhost:3000/register';
 
   register(userInfo): Observable<any> {
     return this._http.post<any>(this.regUrl, userInfo);

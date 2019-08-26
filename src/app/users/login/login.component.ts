@@ -57,4 +57,19 @@ get password(){
       error => console.log(error));
   }
 
+  checkEmail(email) {
+    this.authService.checkUser(email).subscribe(
+      data => {
+        if (data.message) {
+          this.errorMessage = '';
+        }
+      },
+      error => {
+        if(error.status === 404) {
+          this.errorMessage = error.error.message;
+        }
+      }
+      )
+  }
+
 }

@@ -22,7 +22,7 @@ export class UserActivationComponent implements OnInit {
     this.interactionService.sendHomeMessage('userActivation');
 
     const queryParameter = this._route.snapshot.queryParamMap.get('uuid');
-    this._http.get('http://192.168.100.197:3000/useractivation?uuid=' + queryParameter).subscribe(
+    this._http.get('http://localhost:3000/useractivation?uuid=' + queryParameter).subscribe(
       httpMsg => {
         // tslint:disable-next-line: no-string-literal
         this.httpMessage = httpMsg['message'];
