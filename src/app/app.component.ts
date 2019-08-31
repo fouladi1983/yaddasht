@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionService } from './interaction.service';
-import { AuthServiceService } from './auth-service.service';
+import { InteractionService } from '@/interaction.service';
+import { AuthServiceService } from '@/auth-service.service';
 
 @Component({
   selector: 'app-root',

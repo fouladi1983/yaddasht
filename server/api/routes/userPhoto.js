@@ -56,7 +56,7 @@ router.post("/upload", (req, res, next) => {
       });
     } else {
       request.query(`select userId from user_photo where userId = ${photoUserInfo.userId}`, (err, result) => {
-        if(result.recordset > 0){
+        if(result.recordset.length > 0){
           request.query(`update user_photo
                           set photo = ${photoUserInfo.photo}
                           where userId = ${photoUserInfo.userId}`);

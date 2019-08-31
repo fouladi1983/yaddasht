@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { InteractionService } from 'src/app/interaction.service';
+import { InteractionService } from '@/interaction.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { PasswordValidator } from 'src/app/shared/password.validator';
-import { RegistrationService } from 'src/app/registration.service';
+import { PasswordValidator } from '@/shared/password.validator';
+import { RegistrationService } from '@/registration.service';
 
 @Component({
   selector: 'app-registeration',

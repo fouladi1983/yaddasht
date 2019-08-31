@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { InteractionService } from "src/app/interaction.service";
+import { InteractionService } from "@/interaction.service";
 import { HttpClient } from "@angular/common/http";
 import { NgxImageCompressService } from "ngx-image-compress";
-import { ShareService } from "src/app/shared/share.service";
+import { ShareService } from "@/shared/share.service";
 
 @Component({
   selector: "app-profile",
@@ -30,21 +30,19 @@ export class ProfileComponent implements OnInit {
         } else {
           this.userImg = userPhoto.photo;
         }
-        console.log(userPhoto);
       });
   }
 
   onUpload() {
     this.imageCompress.uploadFile().then(({ image, orientation }) => {
       this.imageCompress
-        .compressFile(image, orientation, 300, 300)
+        .compressFile(image, orientation, 200, 150)
         .then(result => {
           this.uploadedImage = result;
           const userInfo = {
             photo: result,
             userId: localStorage.getItem("userId")
           };
-
           this.shareService.uploadPhoto(userInfo).subscribe(
             data => {},
             error => {

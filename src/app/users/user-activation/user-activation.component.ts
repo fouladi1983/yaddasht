@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { InteractionService } from 'src/app/interaction.service';
+import { InteractionService } from '@/interaction.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

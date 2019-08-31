@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { InteractionService } from 'src/app/interaction.service';
+import { InteractionService } from '@/interaction.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthServiceService } from 'src/app/auth-service.service';
+import { AuthServiceService } from '@/auth-service.service';
 import { Router } from '@angular/router';
 
 @Component({
