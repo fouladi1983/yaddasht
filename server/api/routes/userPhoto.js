@@ -57,13 +57,13 @@ router.post("/upload", (req, res, next) => {
     } else {
       request.query(`select userId from user_photo where userId = ${photoUserInfo.userId}`, (err, result) => {
         if(result.recordset.length > 0){
-          request.query(`update user_photo
-                          set photo = ${photoUserInfo.photo}
-                          where userId = ${photoUserInfo.userId}`);
+          request.query("update user_photo\
+                          set photo = '"+photoUserInfo.photo+"'\
+                          where userId = '"+photoUserInfo.userId+"'");
         }else{
           request.query(
-            `insert into user_photo(photo,userId)
-                          values('${photoUserInfo.photo}', '${photoUserInfo.userId}')`,
+            "insert into user_photo(photo,userId)\
+                          values('"+photoUserInfo.photo+"', '"+photoUserInfo.userId+"')",
             err => {
               if (err) {
                 res.status(503).json({
