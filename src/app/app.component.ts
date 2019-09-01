@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
       .getUserPhoto(localStorage.getItem("userId"))
       .subscribe(data => {
         console.log(data);
-        if (data !== null || data == "") {
+        if (data !== null || data === '') {
           this.userPhoto = data.photo;
         } else {
           this.userPhoto = "../assets/img/avatar.png";

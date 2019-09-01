@@ -1,0 +1,15 @@
+.description {
+  width: 50%;
+}
+.desText {
+  font-size: 14px;
+}
+select{
+  width:50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .description {
+    width: 100%;
+  }
+}

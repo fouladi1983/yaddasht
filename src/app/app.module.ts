@@ -12,6 +12,8 @@ import { WorkbookComponent } from './workbook/workbook.component';
 import { AuthGuard } from './auth.guard';
 import { TokenIntercepterService } from './token-intercepter.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { DpDatePickerModule } from 'ng2-jalali-date-picker';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     RegisterationComponent,
     UserActivationComponent,
     WorkbookComponent,
+    TaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    DpDatePickerModule
   ],
   providers: [AuthGuard,
     {
