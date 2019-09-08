@@ -1,51 +1,16 @@
 <div class="row" style="width: 95%">
   <div class="col-md-6">
-    <button class="btn btn-link" data-toggle="modal" data-target="#exampleModal">ایجاد وظیفه</button>
+    <button class="btn btn-link" data-toggle="modal" data-target="#create-task-modal">ایجاد وظیفه</button>
+    <button class="btn btn-link" data-toggle="modal" data-target="#create-project-modal">ایجاد پروژه</button>
   </div>
   <!-- CREATE TASK MODAL-->
   <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">ایجاد وظیفه</h5>
-          <button
-            type="button"
-            class="ml-0 close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <input type="text" class="form-control" placeholder="عنوان">
-          <textarea name="" id="" class="mt-1 form-control" rows="3" placeholder="توضیحات"></textarea>
-          <span>ارجاع:</span>
-          <select name="" id="" class="mt-1 form-control">
-            <option value="محمد">محمد</option>
-            <option value="کیا">کیا</option>
-          </select>
-        </div>
-        <div class="modal-footer ml-auto">
-          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
-            بستن
-          </button>
-          <button type="button" class="btn btn-outline-primary">ذخیره</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<app-create-task></app-create-task>
+<app-create-project></app-create-project>
   <!---->
   <div class="col-md-6">
     <div class="row justify-content-around">
+      از:
       <dp-date-picker
         dir="rtl"
         [(ngModel)]="fromDateObject"
@@ -54,6 +19,7 @@
         theme="dp-material"
       >
       </dp-date-picker>
+      تا:
       <dp-date-picker
         dir="rtl"
         [(ngModel)]="toDateObject"

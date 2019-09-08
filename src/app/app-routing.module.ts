@@ -9,6 +9,7 @@ import { UserActivationComponent } from './users/user-activation/user-activation
 import { WorkbookComponent } from './workbook/workbook.component';
 import { AuthGuard } from './auth.guard';
 import { TaskComponent } from './task/task.component';
+import { TestComponent } from './test/test.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'user-activation', component: UserActivationComponent},
   { path: 'workbook', component: WorkbookComponent},
-  { path: 'task', component: TaskComponent}
+  { path: 'task', component: TaskComponent},
+  { path: 'test', component: TestComponent}
 ];
 
 @NgModule({

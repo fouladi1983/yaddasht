@@ -14,6 +14,9 @@ import { TokenIntercepterService } from './token-intercepter.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { DpDatePickerModule } from 'ng2-jalali-date-picker';
 import { TaskComponent } from './task/task.component';
+import { CreateTaskComponent } from './workbook/create-task/create-task.component';
+import { CreateProjectComponent } from './workbook/create-project/create-project.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { TaskComponent } from './task/task.component';
     UserActivationComponent,
     WorkbookComponent,
     TaskComponent,
+    CreateTaskComponent,
+    CreateProjectComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
