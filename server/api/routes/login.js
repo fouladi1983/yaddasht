@@ -15,9 +15,10 @@ router.post('/', (req,res,next) => {
     password: req.body.password
   };
 
-  sql.close();
+   sql.close();
   sql.connect(config, (err) => {
     if(err) res.status(503).json({message: 'خطایی در برقراری ارتباط با سرور رخ داده است'});
+
 
     let request = new sql.Request();
     request.query("select Id,isActive,password from users", (err, result) => {
@@ -54,8 +55,8 @@ router.post('/', (req,res,next) => {
         })
       }
     })
-  })
-})
+   })
+ })
 
 
 module.exports = router;

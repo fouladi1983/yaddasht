@@ -4,16 +4,16 @@ exports.mailer = (to,subject,html) => {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
   let transporter = nodemailer.createTransport({
-    host: 'webmail.parmok.com',
+    host: 'webmail.yadasht.net',
     port: 465,
     auth: {
-      user: 'info@parmok.com',
+      user: 'info@yadasht.net',
       pass: '1@wagatsu'
     }
   });
 
   let mailOptions = {
-    from: 'info@parmok.com',
+    from: 'info@yadasht.net',
     to: to,
     subject: subject,
     html: html // html body

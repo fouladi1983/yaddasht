@@ -10,6 +10,11 @@ export class CreateTaskComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  onSubmit(){
+    alert("submmited");
   }
 
 }

@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
         this.displaySidebar = true;
       }
     });
-
-    this.shareService
+    if (this.authService.loggedIn()) {
+      this.shareService
       .getUserPhoto(localStorage.getItem("userId"))
       .subscribe(data => {
         console.log(data);
@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
           this.userPhoto = "../assets/img/avatar.png";
         }
       });
+    }
   }
 
   showSidebar() {

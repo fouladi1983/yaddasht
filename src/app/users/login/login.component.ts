@@ -65,11 +65,11 @@ get password(){
         }
       },
       error => {
-        if(error.status === 404) {
-          this.errorMessage = error.error.message;
-        }
-      }
-      )
+        // if (error.status === 404) {
+        //   this.errorMessage = error.error.message;
+        // }
+        this.errorMessage = error.error.message;
+      });
   }
 
 }

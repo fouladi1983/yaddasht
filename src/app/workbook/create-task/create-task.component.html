@@ -21,6 +21,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <form (submit)="onSubmit()">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="عنوان" />
         </div>
@@ -48,8 +49,9 @@
           >
             بستن
           </button>
-          <button type="button" class="btn btn-outline-primary">ذخیره</button>
+          <button type="submit" class="btn btn-outline-primary">ذخیره</button>
         </div>
+      </form>
       </div>
     </div>
   </div>

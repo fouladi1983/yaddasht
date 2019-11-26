@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { AuthServiceService } from '@/auth-service.service';
 declare const $: any;
 
 @Component({
@@ -9,11 +10,12 @@ declare const $: any;
 export class TestComponent implements OnInit {
   @ViewChild('pdp', {static: false}) persianDatePicker: ElementRef;
 
-  constructor() {
+  constructor(private authService: AuthServiceService) {
   }
 
   ngOnInit() {
     $("#elementId").persianDatepicker();
+    console.log('AUTHE SERVICE: ' + this.authService.loggedIn());
   }
 
   logDate() {
