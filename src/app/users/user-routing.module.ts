@@ -6,9 +6,11 @@ import { UserActivationComponent } from './user-activation/user-activation.compo
 
 
 const routes: Routes = [
-  { path: 'registeration', component: RegisterationComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'user-activation', component: UserActivationComponent}
+  {path: 'users', children: [
+    { path: 'registeration', component: RegisterationComponent},
+    { path: 'login', component: LoginComponent},
+    { path: 'user-activation', component: UserActivationComponent}
+  ]}
 ];
 
 @NgModule({

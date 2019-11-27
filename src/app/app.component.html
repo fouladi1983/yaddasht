@@ -2,13 +2,13 @@
   <a href="#" class="navbar-brand">YADDASHT</a>
   <ul class="navbar-nav mr-auto normal-device">
     <li *ngIf="!authService.loggedIn()" class="nav-item">
-      <a routerLink="/login" class="nav-link">ورود</a>
+      <a routerLink="/users/login" class="nav-link">ورود</a>
     </li>
     <li *ngIf="authService.loggedIn()" class="nav-item" (click)="authService.logoutUser()">
       <a class="nav-link">خروج</a>
     </li>
     <li *ngIf="!authService.loggedIn()" class="nav-item">
-      <a routerLink="/registeration" class="nav-link">ثبت نام</a>
+      <a routerLink="/users/registeration" class="nav-link">ثبت نام</a>
     </li>
   </ul>
   <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -27,10 +27,10 @@
           <a href="#" class="nav-link">درباره ما</a>
       </li>
       <li *ngIf="!authService.loggedIn()" class="navbar-item small-device">
-        <a routerLink="/login" class="nav-link">ورود</a>
+        <a routerLink="/users/login" class="nav-link">ورود</a>
       </li>
       <li *ngIf="!authService.loggedIn()" class="navbar-item small-device">
-        <a routerLink="/registeration" class="nav-link">ثبت نام</a>
+        <a routerLink="/users/registeration" class="nav-link">ثبت نام</a>
       </li>
       <li *ngIf="authService.loggedIn()" class="navbar-item small-device" (click)="authService.logoutUser()">
         <a class="nav-link">خروج</a>
@@ -65,7 +65,7 @@
           <div>سمت: کارشناس ارشد تولید</div>
         </div>
         <div class="list-group sidebar-link">
-          <a routerLink="/workbook" routerLinkActive="active"  class="list-group-item list-group-item-action list-group-item-info">کارتابل</a>
+          <a routerLink="/workbook" routerLinkActive=" active"  class="list-group-item list-group-item-action list-group-item-info">کارتابل</a>
           <a routerLink="/report" routerLinkActive="active" class="list-group-item list-group-item-action list-group-item-secondary">گزارشات</a>
         </div>
       </div>
