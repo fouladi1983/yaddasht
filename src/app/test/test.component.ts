@@ -8,20 +8,11 @@ declare const $: any;
   styleUrls: ["./test.component.scss"]
 })
 export class TestComponent implements OnInit {
-  @ViewChild('pdp', {static: false}) persianDatePicker: ElementRef;
 
   constructor(private authService: AuthServiceService) {
   }
+  text = 'Here is some text to test splice pipe...';
 
   ngOnInit() {
-    $("#elementId").persianDatepicker();
-    console.log('AUTHE SERVICE: ' + this.authService.loggedIn());
-  }
-
-  logDate() {
-    setTimeout(() => {
-      console.log(this.persianDatePicker.nativeElement.value);
-    }, 100);
-
   }
 }

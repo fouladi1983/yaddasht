@@ -27,13 +27,13 @@ import { UsersModule } from './users/users.module';
     TestComponent,
   ],
   imports: [
+    UsersModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    DpDatePickerModule,
-    UsersModule
+    DpDatePickerModule
   ],
   providers: [AuthGuard,
     {
