@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponenets } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,8 +12,7 @@ import { TaskComponent } from './task/task.component';
 import { CreateTaskComponent } from './workbook/create-task/create-task.component';
 import { CreateProjectComponent } from './workbook/create-project/create-project.component';
 import { TestComponent } from './test/test.component';
-import { UsersModule } from './users/users.module';
-
+import { SharedModule } from 'shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,13 +25,11 @@ import { UsersModule } from './users/users.module';
     TestComponent,
   ],
   imports: [
-    UsersModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
     HttpClientModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    SharedModule
   ],
   providers: [AuthGuard,
     {

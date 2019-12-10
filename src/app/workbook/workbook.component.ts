@@ -13,6 +13,7 @@ export class WorkbookComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.toDateObject.toString());
   }
 
 }

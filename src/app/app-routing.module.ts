@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './users/profile/profile.component';
@@ -17,11 +17,12 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'workbook', component: WorkbookComponent},
   { path: 'task', component: TaskComponent},
-  { path: 'test', component: TestComponent}
+  { path: 'test', component: TestComponent},
+  { path: 'users', loadChildren: './users/users.module#UsersModule'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
