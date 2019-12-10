@@ -1,0 +1,105 @@
+const express = require("express");
+const router = express.Router();
+const config = require("./db/config");
+const sql = require("mssql");
+
+router.get("/", (req, res) => {
+  res.status(200).json({
+    message:
+      "GET method has not supported for this page, use POST to create your user"
+  });
+});
+
+router.post("/createTask", (req, res) => {
+  let taskInfo = {
+    name: req.body.taskName,
+    description: req.body.taskDescription,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
+    direct: req.body.direct,
+    userId: req.body.userId
+  };
+
+  let task = {
+    taskInfoId: Number,
+    userId: Number,
+    direct: Boolean
+  };
+
+  let projectId = req.req.projectId;
+
+  sql.close();
+  sql.connect(config, err => {
+    if (err)
+      res.status(503).json({
+        message: "خطایی در اتصال به دیتابیس رخ داده است لطفا دوباره تلاش نمایید"
+      });
+
+    let request = sql.Request();
+    request.query(
+      `insert into taskInfo(name,description,startDate,endData)
+                    values('${taskInfo.name}','${taskInfo.description}','${taskInfo.startDate}','${taskInfo.endDate}')`,
+      (err, result) => {
+        if (err) {
+          res.status(503).json({
+            message:
+              "خطایی در ثبت اطلاعات کاربر رخ داده است لطفا دوباره تلاش نمایید"
+          });
+          sql.close();
+        } else {
+          request.query(
+            `select id as lastID from taskInfo where id = @@Identity`,
+            (err, result) => {
+              if (err) {
+                res.status(503).json({
+                  message:
+                    "خطایی در ثبت اطلاعات کاربر رخ داده است لطفا دوباره تلاش نمایید"
+                });
+                sql.close();
+              } else {
+                task.taskInfoId = result.recordset[0].id;
+                task.direct = taskInfo.direct;
+                task.userId = taskInfo.userId;
+
+                request.query(
+                  `insert into task(taskInfoId,userId,direct)
+                                            values('${task.taskInfoId}','${task.direct}','${task.userId}')`,
+                  (err, result) => {
+                    if (err) {
+                      res.status(503).json({
+                        message:
+                          "خطایی در ثبت اطلاعات کاربر رخ داده است لطفا دوباره تلاش نمایید"
+                      });
+                      sql.close();
+                    } else {
+                      let taskId = result.recordset[0].id;
+                      request.query(
+                        `insert into projectTasks(taskId,projectId)
+                                      values('${taskId}','${projectId}')`,
+                        (err, result) => {
+                          if (err) {
+                            res.status(503).json({
+                              message:
+                                "خطایی در ثبت اطلاعات کاربر رخ داده است لطفا دوباره تلاش نمایید"
+                            });
+                            sql.close();
+                          } else {
+                            res.status(200).json({
+                              message: `با موفقیت ثبت گردید ${taskInfo.name}`
+                            });
+                          }
+                        }
+                      );
+                    }
+                  }
+                );
+              }
+            }
+          );
+        }
+      }
+    );
+  });
+});
+
+module.exports = router;
