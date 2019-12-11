@@ -40,7 +40,6 @@ router.post("/createTask", (req, res) => {
       `insert into taskInfo(name,description,startDate,endDate)
                     values('${taskInfo.name}','${taskInfo.description}','${taskInfo.startDate}','${taskInfo.endDate}')`,
       (err, result) => {
-        //============
         if (err) {
           res.status(503).json({
             message:
@@ -51,8 +50,6 @@ router.post("/createTask", (req, res) => {
           request.query(
             `select id as lastID from taskInfo where id = @@Identity`,
             (err, result) => {
-              // res.status(200).json({
-              //   message: result.recordset[0].lastID});
               if (err) {
                 res.status(503).json({
                   message:
