@@ -1,43 +1,48 @@
 <div
-class="modal fade"
-id="create-project-modal"
-tabindex="-1"
-role="dialog"
-aria-labelledby="create-task-label"
-aria-hidden="true"
+  class="modal fade"
+  id="create-project-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="create-task-label"
+  aria-hidden="true"
 >
-<div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="create-task-label">ایجاد پروژه</h5>
+      <div class="modal-header">
+        <h5 class="modal-title" id="create-task-label">ایجاد پروژه</h5>
+        <button
+          type="button"
+          class="ml-0 close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="createProjectFrom">
+          <div class="form-group">
+            <label>عنوان پروژه:</label>
+            <input [class.is-invalid]="createProjectFrom.get('projectName').invalid && createProjectFrom.get('projectName').touched" name="projectName" type="text" class="form-control" formControlName="projectName"/>
+            <small [class.d-none]="createProjectFrom.get('projectName').valid || createProjectFrom.get('projectName').untouched" class="text-danger">عنوان پروژه الزامی است</small>
+          </div>
+          <div class="form-group">
             <button
-              type="button"
-              class="ml-0 close"
-              data-dismiss="modal"
-              aria-label="Close"
+            type="button"
+            class="btn btn-outline-secondary"
+            data-dismiss="modal"
+          >
+            بستن
+          </button>
+            <button
+              type="submit"
+              class="btn btn-outline-success"
             >
-              <span aria-hidden="true">&times;</span>
+              ایجاد پروژه
             </button>
           </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <input name="project-name" type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <textarea
-                name=""
-                id=""
-                class="mt-1 form-control"
-                rows="3"
-                placeholder="توضیحات"
-              ></textarea>
-            </div>
-            <div class="form-control">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-outline-success">ایجاد وظیفه</button>
-            </div>
-          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 </div>

@@ -38,8 +38,6 @@
           <div class="form-group">
             <small [class.d-none]="createTaskForm.get('description').valid || createTaskForm.get('description').untouched" class="text-danger">توضیحات اجباری است</small>
             <textarea
-              name=""
-              id=""
               class="mt-1 form-control"
               [class.is-invalid]="
                 createTaskForm.get('description').invalid &&
@@ -73,8 +71,6 @@
           <div class="form-group">
             <span>ارجاع:</span>
             <select
-              name=""
-              id=""
               class="mt-1 form-control"
               formControlName="assign"
             >
