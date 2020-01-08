@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+declare const $: any;
 
 @Component({
   selector: 'app-create-task',
@@ -10,12 +11,22 @@ export class CreateTaskComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
+  createTaskForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    fromDate: '',
+    toDate: '',
+    assign: ''
+  });
 
+  ngOnInit() {
+    $(document).ready(() => {
+      $('.pDatepicker').datepicker();
+    })
   }
 
-  onSubmit(){
-    alert("submmited");
+  onSubmit(fromDate,toDate){
+    console.log(this.createTaskForm.get('title').value, this.createTaskForm.get('description').value,fromDate,toDate);
   }
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-declare const $: any;
 
 @Component({
   selector: 'app-workbook',
@@ -11,9 +10,6 @@ export class WorkbookComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    $(document).ready(() => {
-      $('.pDatepicker').datepicker();
-    })
   }
 
   filter(fromDate, toDate){
