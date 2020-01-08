@@ -7,12 +7,10 @@ import { WorkbookComponent } from './workbook/workbook.component';
 import { AuthGuard } from './auth.guard';
 import { TokenIntercepterService } from './token-intercepter.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import { DpDatePickerModule } from 'ng2-jalali-date-picker';
 import { TaskComponent } from './task/task.component';
-import { CreateTaskComponent } from './workbook/create-task/create-task.component';
-import { CreateProjectComponent } from './workbook/create-project/create-project.component';
 import { TestComponent } from './test/test.component';
 import { SharedModule } from 'shared/shared.module';
+import { WorkbookModule } from './workbook/workbook.module';
 
 @NgModule({
   declarations: [
@@ -20,16 +18,13 @@ import { SharedModule } from 'shared/shared.module';
     routingComponenets,
     WorkbookComponent,
     TaskComponent,
-    CreateTaskComponent,
-    CreateProjectComponent,
     TestComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DpDatePickerModule,
-    SharedModule
+    WorkbookModule
   ],
   providers: [AuthGuard,
     {

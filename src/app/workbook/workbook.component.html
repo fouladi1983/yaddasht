@@ -10,25 +10,9 @@
   <!---->
   <div class="col-md-6">
     <div class="row justify-content-around">
-      از:
-      <dp-date-picker
-        dir="rtl"
-        [(ngModel)]="fromDateObject"
-        mode="day"
-        placeholder="از تاریخ"
-        theme="dp-material"
-      >
-      </dp-date-picker>
-      تا:
-      <dp-date-picker
-        dir="rtl"
-        [(ngModel)]="toDateObject"
-        mode="day"
-        placeholder="تا تاریخ"
-        theme="dp-material"
-      >
-      </dp-date-picker>
-      <button class="btn btn-link">فیلتر</button>
+      از: <input #fromDate type="text" class="form-control pDatepicker">
+      تا :<input #toDate type="text" class="form-control pDatepicker">
+      <button class="btn btn-link" (click)="filter(fromDate.value, toDate.value)">فیلتر</button>
     </div>
   </div>
 </div>

@@ -29,16 +29,14 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss",
-              "src/assets/css/persianDatepicker-default.css",
-              "src/assets/css/normalize.css"
+              "node_modules/bootstrap-jalali-datepicker/bootstrap-datepicker.min.css",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/js/persianDatepicker.min.js",
-              "src/assets/js/prism.min.js"
+              "node_modules/bootstrap-jalali-datepicker/bootstrap-datepicker.min.js",
+              "node_modules/bootstrap-jalali-datepicker/bootstrap-datepicker.fa.min.js"
             ]
           },
           "configurations": {

@@ -21,9 +21,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <form (submit)="onSubmit()">
+        <form (submit)="onSubmit()" [formGroup]="createTaskForm">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="عنوان" />
+            <input type="text" class="form-control" placeholder="عنوان" formControlName="title/>
           </div>
           <div class="form-group">
             <textarea
@@ -32,11 +32,16 @@
               class="mt-1 form-control"
               rows="3"
               placeholder="توضیحات"
+              formControlName="description"
             ></textarea>
+          </div>
+          <div class="row">
+            <div class="col col-md-6">شروع: <input type="text" class="pDatepicker form-control" formControlName="fromDate"></div>
+            <div class="col col-md-6">پایان : <input type="text" class="pDatepicker form-control" formControlName="toDate"></div>
           </div>
           <div class="form-group">
             <span>ارجاع:</span>
-            <select name="" id="" class="mt-1 form-control">
+            <select name="" id="" class="mt-1 form-control" formControlName="assign">
               <option value="محمد">محمد</option>
               <option value="کیا">کیا</option>
             </select>
