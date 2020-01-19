@@ -3,24 +3,26 @@ import { InteractionService } from '@/interaction.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthServiceService } from '@/auth-service.service';
 import { Router } from '@angular/router';
+import { RegistrationService } from '@/registration.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit {
 
- @ViewChild('emailRef', {static: false}) emailElementRef: ElementRef;
 
  errorMessage = '';
  resError = false;
  errorMsg = '';
+ responseError = false;
 
   constructor(
     private interactionService: InteractionService,
     private fb: FormBuilder,
     private authService: AuthServiceService,
+    private regSrv: RegistrationService,
     private _router: Router
     ) { }
 
@@ -38,10 +40,6 @@ get password(){
 
   ngOnInit() {
     this.interactionService.sendHomeMessage('loginComponent');
-  }
-
-  ngAfterViewInit(){
-    this.emailElementRef.nativeElement.focus();
   }
 
   onSubmit() {
@@ -77,11 +75,12 @@ get password(){
         }
       },
       error => {
-        // if (error.status === 404) {
-        //   this.errorMessage = error.error.message;
-        // }
         this.errorMessage = error.error.message;
       });
+  }
+
+  sendRecoveryEmail(email: string) {
+    this.regSrv.recovery(email).subscribe(data => console.log(data));
   }
 
 }

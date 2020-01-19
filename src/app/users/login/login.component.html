@@ -20,13 +20,31 @@
             </div>
             <div class="form-group">
               <label for="">رمز  عبور</label>
-              <input formControlName="password" [class.is-invalid]="password.invalid && password.touched" type="password" class="form-control" (click)="removeErrorMsg()">
+              <input formControlName="password" [class.is-invalid]="password.invalid && password.touched || resError" type="password" class="form-control" (click)="removeErrorMsg()">
               <small class="text-danger" [class.d-none]="password.valid || password.untouched">رمز عبور باید وارد شود</small>
               <small *ngIf="resError" class="text-danger">{{errorMsg}}</small>
             </div>
             <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success float-left  rounded-0">ورود</button>
+            <a href="#" data-toggle="modal" data-target="#myModal">بازیابی گذرواژه</a>
           </form>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <label for="">ایمیل:</label>
+          <input #email type="email" class="form-control" placeholder="ایمیل خود را جهت بازیابی وارد کنید...">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="sendRecoveryEmail(email.value)">ارسال</button>
+        </div>
+      </div>
+
     </div>
   </div>
