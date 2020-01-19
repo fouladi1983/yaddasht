@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
  @ViewChild('emailRef', {static: false}) emailElementRef: ElementRef;
 
  errorMessage = '';
+ resError = false;
+ errorMsg = '';
 
   constructor(
     private interactionService: InteractionService,
@@ -54,7 +56,17 @@ get password(){
       localStorage.setItem('userId', data['userId']);
       this._router.navigateByUrl('/');
       },
-      error => console.log(error));
+      error =>{
+        if(error){
+          this.resError = true;
+          this.errorMsg = error.error.message;
+        }
+      });
+  }
+
+  removeErrorMsg(){
+    this.resError = false;
+    this.errorMessage = '';
   }
 
   checkEmail(email) {

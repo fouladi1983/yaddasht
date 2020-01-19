@@ -11,7 +11,7 @@ import { TestComponent } from './test/test.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/test', pathMatch: 'full'},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'report', component: ReportComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
